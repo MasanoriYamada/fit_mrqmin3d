@@ -40,7 +40,7 @@ std::string		inPath	      = "/home/sinyamada/results/kappa_013700.013640/ts32/sp
 std::string		outPath	      = "/home/sinyamada/results/kappa_013700.013640/ts32/spin00.bin"
   + lexical_cast<string>(binsize) + "/fitPot/bin";
 std::string		outAvePath    = "/home/sinyamada/results/kappa_013700.013640/ts32/spin00.bin"
-  + lexical_cast<string>(binsize) + "/ave/fitPot/bin";
+  + lexical_cast<string>(binsize) + "/ave/fitPot/";
 std::string             physInfo      = "RC32x64_B1900Kud01370000Ks01364000C1715";
 std::string		inStaticsInfo = "Potential";
 std::string		osi1g1yy1D    = "1g1yy1D";
@@ -95,77 +95,77 @@ int main(){
     //-------------------------------------------//
 
     cout << "@Start ave fit t ="<<iT <<endl;
-
-
+ 
+ 
     Fit* fit1g1y3D = new Fit(new Fit1g1y3D());
     Fit* fit1g1y1D = new Fit(new Fit1g1y1D());
     Fit* fit1g1yy3D = new Fit(new Fit1g1yy3D());
     Fit* fit1g1yy1D = new Fit(new Fit1g1yy1D());
     double	chisq = 0.0;
-
-
-    //------------potential ave fit for test -----------------//
-    double* paAvefit1g1y3D = new double[fit1g1y3D->getDofA()+1];
-    double* paAvefit1g1y1D = new double[fit1g1y1D->getDofA()+1];
-    double* paAvefit1g1yy3D = new double[fit1g1yy3D->getDofA()+1];
-    double* paAvefit1g1yy1D = new double[fit1g1yy1D->getDofA()+1];
- 
-    try{
-      fit1g1y3D->setRange(0,15);
-      fit1g1y3D->fit(ave, err, paAvefit1g1y3D,chisq);
-      cout<<"@ave param "<<fit1g1y3D->getName()<<" " <<paAvefit1g1y3D[0]<<" "<<paAvefit1g1y3D[1]<<" "<<paAvefit1g1y3D[2]<<" "<<paAvefit1g1y3D[3]<<" "<<paAvefit1g1y3D[4]<<" chisq = "<<chisq<<endl;
-      paAvefit1g1y3D[5]=chisq;
-    }
-    catch (const char* error1)	    {
-      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
-      cerr<<endl;
-    }
  
  
-    try{
-      fit1g1y1D->setRange(0,15);
-      fit1g1y1D->fit(ave, err, paAvefit1g1y1D,chisq);
-      cout<<"@ave param " <<fit1g1y1D->getName()<<" " <<paAvefit1g1y1D[0]<<" "<<paAvefit1g1y1D[1]<<" "<<paAvefit1g1y1D[2]<<" "<<paAvefit1g1y1D[3]<<" "<<paAvefit1g1y1D[4]<<" chisq = "<<chisq<<endl;
-      paAvefit1g1y1D[5]=chisq;
-    }
-    catch (const char* error1)	    {
-      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
-      cerr<<endl;
-	}
- 
- 
-    try{
-      fit1g1yy3D->setRange(0,15);
-      fit1g1yy3D->fit(ave, err, paAvefit1g1yy3D,chisq);
-      cout<<"@ave param " <<fit1g1yy3D->getName()<<" " <<paAvefit1g1yy3D[0]<<" "<<paAvefit1g1yy3D[1]<<" "<<paAvefit1g1yy3D[2]<<" "<<paAvefit1g1yy3D[3]<<" "<<paAvefit1g1yy3D[4]<<" chisq = "<<chisq<<endl;
-      paAvefit1g1yy3D[5]=chisq;
-    }
-    catch (const char* error1)	    {
-      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
-      cerr<<endl;
-    }
- 
-    try{
-	fit1g1yy1D->setRange(0,15);
-	fit1g1yy1D->fit(ave, err, paAvefit1g1yy1D,chisq);
-	cout<<"@ave param " <<fit1g1yy1D->getName()<<" " <<paAvefit1g1yy1D[0]<<" "<<paAvefit1g1yy1D[1]<<" "<<paAvefit1g1yy1D[2]<<" "<<paAvefit1g1yy1D[3]<<" "<<paAvefit1g1yy1D[4]<<" chisq = "<<chisq<<endl;
-	paAvefit1g1yy1D[5]=chisq;
-    }
-    catch (const char* error1)	    {
-      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
-      cerr<<endl;
-    }
- 
-	io.outData(paAvefit1g1y3D ,outAvePath,osi1g1y3D,physInfo,Confsize,iT,fit1g1y3D->getDofA()+1);
-	io.outData(paAvefit1g1y1D ,outAvePath,osi1g1y1D,physInfo,Confsize,iT,fit1g1y1D->getDofA()+1);
-	io.outData(paAvefit1g1yy3D,outAvePath,osi1g1yy3D,physInfo,Confsize,iT,fit1g1yy3D->getDofA()+1);
-	io.outData(paAvefit1g1yy1D,outAvePath,osi1g1yy1D,physInfo,Confsize,iT,fit1g1yy1D->getDofA()+1);
- 
- 
-	delete []  paAvefit1g1y3D  ;
-	delete []  paAvefit1g1y1D  ;
-	delete []  paAvefit1g1yy3D ;
-	delete []  paAvefit1g1yy1D ;
+//    //------------potential ave fit for test -----------------//
+//    double* paAvefit1g1y3D = new double[fit1g1y3D->getDofA()+1];
+//    double* paAvefit1g1y1D = new double[fit1g1y1D->getDofA()+1];
+//    double* paAvefit1g1yy3D = new double[fit1g1yy3D->getDofA()+1];
+//    double* paAvefit1g1yy1D = new double[fit1g1yy1D->getDofA()+1];
+// 
+//    try{
+//      fit1g1y3D->setRange(0,15);
+//      fit1g1y3D->fit(ave, err, paAvefit1g1y3D,chisq);
+//      cout<<"@ave param "<<fit1g1y3D->getName()<<" " <<paAvefit1g1y3D[0]<<" "<<paAvefit1g1y3D[1]<<" "<<paAvefit1g1y3D[2]<<" "<<paAvefit1g1y3D[3]<<" "<<paAvefit1g1y3D[4]<<" chisq = "<<chisq<<endl;
+//      paAvefit1g1y3D[5]=chisq;
+//    }
+//    catch (const char* error1)	    {
+//      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
+//      cerr<<endl;
+//    }
+// 
+// 
+//    try{
+//      fit1g1y1D->setRange(0,15);
+//      fit1g1y1D->fit(ave, err, paAvefit1g1y1D,chisq);
+//      cout<<"@ave param " <<fit1g1y1D->getName()<<" " <<paAvefit1g1y1D[0]<<" "<<paAvefit1g1y1D[1]<<" "<<paAvefit1g1y1D[2]<<" "<<paAvefit1g1y1D[3]<<" "<<paAvefit1g1y1D[4]<<" chisq = "<<chisq<<endl;
+//      paAvefit1g1y1D[5]=chisq;
+//    }
+//    catch (const char* error1)	    {
+//      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
+//      cerr<<endl;
+// 	}
+// 
+// 
+//    try{
+//      fit1g1yy3D->setRange(0,15);
+//      fit1g1yy3D->fit(ave, err, paAvefit1g1yy3D,chisq);
+//      cout<<"@ave param " <<fit1g1yy3D->getName()<<" " <<paAvefit1g1yy3D[0]<<" "<<paAvefit1g1yy3D[1]<<" "<<paAvefit1g1yy3D[2]<<" "<<paAvefit1g1yy3D[3]<<" "<<paAvefit1g1yy3D[4]<<" chisq = "<<chisq<<endl;
+//      paAvefit1g1yy3D[5]=chisq;
+//    }
+//    catch (const char* error1)	    {
+//      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
+//      cerr<<endl;
+//    }
+// 
+//    try{
+// 	fit1g1yy1D->setRange(0,15);
+// 	fit1g1yy1D->fit(ave, err, paAvefit1g1yy1D,chisq);
+// 	cout<<"@ave param " <<fit1g1yy1D->getName()<<" " <<paAvefit1g1yy1D[0]<<" "<<paAvefit1g1yy1D[1]<<" "<<paAvefit1g1yy1D[2]<<" "<<paAvefit1g1yy1D[3]<<" "<<paAvefit1g1yy1D[4]<<" chisq = "<<chisq<<endl;
+// 	paAvefit1g1yy1D[5]=chisq;
+//    }
+//    catch (const char* error1)	    {
+//      cerr <<error1<<"ave ERR convergence is not achieved"<<endl;
+//      cerr<<endl;
+//    }
+// 
+// 	io.outData(paAvefit1g1y3D ,outAvePath,osi1g1y3D,physInfo,Confsize,iT,fit1g1y3D->getDofA()+1);
+// 	io.outData(paAvefit1g1y1D ,outAvePath,osi1g1y1D,physInfo,Confsize,iT,fit1g1y1D->getDofA()+1);
+// 	io.outData(paAvefit1g1yy3D,outAvePath,osi1g1yy3D,physInfo,Confsize,iT,fit1g1yy3D->getDofA()+1);
+// 	io.outData(paAvefit1g1yy1D,outAvePath,osi1g1yy1D,physInfo,Confsize,iT,fit1g1yy1D->getDofA()+1);
+// 
+// 
+// 	delete []  paAvefit1g1y3D  ;
+// 	delete []  paAvefit1g1y1D  ;
+// 	delete []  paAvefit1g1yy3D ;
+// 	delete []  paAvefit1g1yy1D ;
  
 
     //------------main fit (each conf)-----------------//
@@ -186,55 +186,55 @@ int main(){
 	double* a3 = new double[fit1g1yy3D->getDofA()+1];
 	double* a4 = new double[fit1g1yy1D->getDofA()+1];
 
-// 	  try{
-// 	  fit1g1y3D->setRange(0,15);
-// 	  fit1g1y3D->fit(binPotIn, err, a1,chisq);
-// 	  cout<<iconf<<"@param " <<a1[0]<<" "<<a1[1]<<" "<<a1[2]<<" "<<a1[3]<<" "<<a1[4]<<" chisq = "<<chisq<<endl;
-// 	  a1[5] = chisq;
-// 	  }
-// 	  catch (const char* error1)	  {
-// 	  cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
-// 	  cerr<<endl;
-// 	  }
-// 	  io.outData(a1,outPath,osi1g1y3D,physInfo,iconf,iT,fit1g1y1D->getDofA()+1);
-// 
-// 
-// 	  try{
-// 	    fit1g1y1D->setRange(0,15);
-// 	    fit1g1y1D->fit(binPotIn, err, a2,chisq);
-// 	    cout<<iconf<<"@param " <<a2[0]<<" "<<a2[1]<<" "<<a2[2]<<" "<<a2[3]<<" "<<a2[4]<<" chisq = "<<chisq<<endl;
-// 	    a2[5] = chisq;
-// 	  }
-// 	  catch (const char* error1)	{
-// 	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
-// 	    cerr<<endl;
-// 	  }
-// 	  io.outData(a2,outPath,osi1g1y1D,physInfo,iconf,iT,fit1g1y1D->getDofA()+1);	  
-//  
-// 	  try{
-// 	    fit1g1yy3D->setRange(0,15);
-// 	    fit1g1yy3D->fit(binPotIn, err, a3,chisq);
-// 	    cout<<iconf<<"@param " <<a3[0]<<" "<<a3[1]<<" "<<a3[2]<<" "<<a3[3]<<" "<<a3[4]<<" chisq = "<<chisq<<endl;
-// 	    a3[5] = chisq;
-// 	  }
-// 	  catch (const char* error1)	{
-// 	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
-// 	    cerr<<endl;
-// 	  }
-// 	io.outData(a3,outPath,osi1g1yy3D,physInfo,iconf,iT,fit1g1yy1D->getDofA()+1);
-//  
-// 	  try{
-// 	    fit1g1yy1D->setRange(0,15);
-// 	    fit1g1yy1D->fit(binPotIn, err, a4,chisq);
-// 	    cout<<iconf<<"@param " <<a4[0]<<" "<<a4[1]<<" "<<a4[2]<<" "<<a4[3]<<" "<<a4[4]<<" chisq = "<<chisq<<endl;
-// 	    a4[5] = chisq;
-// 	  }
-// 	  catch (const char* error1)	{
-// 	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
-// 	  cerr<<endl;
-// 	  }
-// 
-// 	  
+	  try{
+	  fit1g1y3D->setRange(0,15);
+	  fit1g1y3D->fit(binPotIn, err, a1,chisq);
+	  cout<<iconf<<"@param " <<a1[0]<<" "<<a1[1]<<" "<<a1[2]<<" "<<a1[3]<<" "<<a1[4]<<" chisq = "<<chisq<<endl;
+	  a1[5] = chisq;
+	  }
+	  catch (const char* error1)	  {
+	  cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
+	  cerr<<endl;
+	  }
+	  io.outData(a1,outPath,osi1g1y3D,physInfo,iconf,iT,fit1g1y1D->getDofA()+1);
+ 
+ 
+	  try{
+	    fit1g1y1D->setRange(0,15);
+	    fit1g1y1D->fit(binPotIn, err, a2,chisq);
+	    cout<<iconf<<"@param " <<a2[0]<<" "<<a2[1]<<" "<<a2[2]<<" "<<a2[3]<<" "<<a2[4]<<" chisq = "<<chisq<<endl;
+	    a2[5] = chisq;
+	  }
+	  catch (const char* error1)	{
+	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
+	    cerr<<endl;
+	  }
+	  io.outData(a2,outPath,osi1g1y1D,physInfo,iconf,iT,fit1g1y1D->getDofA()+1);	  
+  
+	  try{
+	    fit1g1yy3D->setRange(0,15);
+	    fit1g1yy3D->fit(binPotIn, err, a3,chisq);
+	    cout<<iconf<<"@param " <<a3[0]<<" "<<a3[1]<<" "<<a3[2]<<" "<<a3[3]<<" "<<a3[4]<<" chisq = "<<chisq<<endl;
+	    a3[5] = chisq;
+	  }
+	  catch (const char* error1)	{
+	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
+	    cerr<<endl;
+	  }
+	io.outData(a3,outPath,osi1g1yy3D,physInfo,iconf,iT,fit1g1yy1D->getDofA()+1);
+  
+	  try{
+	    fit1g1yy1D->setRange(0,15);
+	    fit1g1yy1D->fit(binPotIn, err, a4,chisq);
+	    cout<<iconf<<"@param " <<a4[0]<<" "<<a4[1]<<" "<<a4[2]<<" "<<a4[3]<<" "<<a4[4]<<" chisq = "<<chisq<<endl;
+	    a4[5] = chisq;
+	  }
+	  catch (const char* error1)	{
+	    cerr <<error1<<"  CONF = " << iconf<<" ERR convergence is not achieved"<<endl;
+	  cerr<<endl;
+	  }
+ 
+	  
 	  
 	  delete [] binPotIn;
 
