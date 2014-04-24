@@ -24,7 +24,7 @@ inline double y_function(double x, double b1, double b2, double b3, double b4, d
    return b1*exp(-b2*x*x)+ b3*((1 - exp(-b4*x*x)))*((1 - exp(-b4*x*x))/x)*(exp(-b5*x))*(exp(-b5*x)/x);
   }
   else {
-    cout<<"ERR:: fit data x is warng"<<endl;
+    cout<<"ERR:: fit data x is warng x="<<x<<endl;
     exit(0);
   }
 
@@ -215,19 +215,19 @@ void  Fit1g1yy3D::fit(double datain[], double datain_sigma[], double* b, double&
   if(is_initial==1){
         is_initial =0;
 
-    //it07
-	a[0] = 1084.59;
-	a[1] = 54.265;
-	a[2] = -342.863;
-	a[3] = 2.35015;
-	a[4] =  2.65749;
-	/*
-    a[0] = 1079.14;
-    a[1] = 53.9753;
-    a[2] = -361.082;
-    a[3] = 2.3395;
-    a[4] = 2.7287;
-    */
+	//it07
+	//a[0] = 1084.59;
+	//a[1] = 54.265;
+	//a[2] = -342.863;
+	//a[3] = 2.35015;
+	//a[4] =  2.65749;
+	//kappa_013700.013640 it11                                                                                                                                                                                                                                                                                              
+	a[0] = 1479.41;
+	a[1] = 47.1555;
+	a[2] = -483.028;
+	a[3] = 1.22951 ;
+	a[4] = 1.04819 ;
+
   }
 
 

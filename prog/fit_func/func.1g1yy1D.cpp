@@ -83,14 +83,20 @@ void  Fit1g1yy1D::fit(double* datain, double* datain_sigma, double* b, double& c
   if(is_initial==1){
     is_initial = 0;
 
-    //it07
-    a[0] = 1148.23;
-    a[1] = 53.1;
-    a[2] = -333.105;
-    a[3] = 2.51011;
-    a[4] = 2.23122;
+    //set1 it07
+   // a[0] = 1148.23;
+   // a[1] = 53.1;
+   // a[2] = -333.105;
+   // a[3] = 2.51011;
+   // a[4] = 2.23122;
+    //kappa_013700.013640 it11
+    a[0] = 1479.5 ;  
+    a[1] = 47.1749 ;  
+    a[2] = -470.246;  
+    a[3] = 1.24333 ;  
+    a[4] = 1.03994 ;  
   }
-
+  
 
   // The initial call
   alambda = -1.0;
